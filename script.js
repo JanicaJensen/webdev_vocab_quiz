@@ -42,7 +42,7 @@ const quizData = [
     {
         question: "How is algorithm defined?",
         a: "A function.",
-        b: "It's Spanish for 'something rhythm;.",
+        b: "It's Spanish for 'something rhythm'.",
         c: "A variable with an array.",
         d: "A set of steps to complete a task.",
         correct: "d",
