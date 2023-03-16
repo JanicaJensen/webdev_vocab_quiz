@@ -11,8 +11,15 @@
 <body>
     <!--<h1>Project Starter</h1>-->
     <div id="timerDisplay"><p>timer</p></div>
-    <div class="quiz-container" id="quiz">
-        
+    
+    <main>
+
+        <div class="startQuiz">
+            <h1>Javascript Coding Quiz</h1>
+        <p>You WILL be timed, and penalized by losing time for wrong answers.</p> 
+       </div>
+    
+            <div class="quiz-container" id="quiz">
     <div class="quiz-header">
     <h2 id="question">Question text</h2>
     <ul>
@@ -39,13 +46,19 @@
 </div>
 
 
-
 </div>
 <button id="submit">Submit</button>
-<div>
+
+<div class="scoreForm">
+    <p>Save your score.</p>
+    <p>Initials:</p>
+</div>
+
+<div class="scoreList">
     <h2>HIGH SCORES</h2>
 <ol id=”highScores”></ol>
 </div>
+</main>
 
     <script src="script.js"></script>
 </body>
