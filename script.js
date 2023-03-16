@@ -64,13 +64,21 @@ const a_text = document.getElementById('a_text')
 const b_text = document.getElementById('b_text')
 const c_text = document.getElementById('c_text')
 const d_text = document.getElementById('d_text')
-const submitbutton = document.getElementById('submit')
+var submitbutton = document.getElementById('submit')
 
-var scoreList = document.getElementById('scoreList');
-var highScores = document.getElementById('highScores');
+var list = document.getElementById('list');
 var scoreForm = document.getElementById('scoreForm');
+var startQuizDiv = document.getElementById('startQuiz');
+var timerDisplay = document.getElementById('timerDisplay');
+var savebtn = document.getElementById('savebtn');
+var scoreForm = document.getElementById('scoreForm');
+var initials = document.getElementById('initials');
+var showScoresBtn = document.getElementById('showScoresBtn');
 var questionNumber = 0
 var score = 0
+var scoreDisplay = (initials.value) ;
+
+
 
 function getSelected() {
     var answer
@@ -84,13 +92,37 @@ function getSelected() {
 }
 
 
-function saveScore() {
-    var sScore = confirm("Save score?");
-    if (sScore) {
-        var savePrompt = prompt("Enter initials:");
 
+
+function saveScore(event) {
+    event.preventDefault();
+    if (initials.value === "") {
+        alert("Please enter your initials!");
+        return;
+    } 
+    
+    var userScore = (`${initials.value}, ${score} `);
+    localStorage.setItem('savedScores', userScore);
+    
+    var savedScores = localStorage.getItem("high scores");
+    var scoresArray;
+
+    if (savedScores === null) {
+        scoresArray = [];
+    } else {
+        scoresArray = JSON.parse(savedScores)
     }
-}
+    console.log(userScore);
+    scoresArray.push(userScore);
+    var scoresArrayString = JSON.stringify(scoresArray);
+    window.localStorage.setItem("high scores", scoresArrayString);
+    showScoresBtn.addEventListener('click', addScore);
+
+        }
+
+       
+
+ 
 
 
 submitbutton.addEventListener('click', () => {
@@ -118,15 +150,23 @@ submitbutton.addEventListener('click', () => {
 
 
 
+
+
 function deselectAnswers() {
     answers.forEach(answerEl => answerEl.checked = false)
     }
 
+
+
+
+    
 function startQuiz() {
     quiz.style.display = "none";
     submitbutton.innerText = "Start Quiz";
     submitbutton.addEventListener('click', () => {
+        startQuizDiv.style.display = "none";
         quiz.style.display = "block";
+       
         deselectAnswers()
         submitbutton.innerText = "submit";
 
@@ -144,95 +184,43 @@ var currentQuizQuestion = quizQuestions[questionNumber]
 
     )}
 
+
+
 startQuiz();
 
 
+    
+
+
+var i = 0
+function addScore() {
+    var savedScores = localStorage.getItem("high scores");
+    if (savedScores === null) {
+        return;
+    }
+    console.log(savedScores);
+    var storedHighScores = JSON.parse(savedScores);
+    for (; i < storedHighScores.length; i++) {
+        var eachNewHighScore = document.createElement("li");
+        eachNewHighScore.innerHTML = storedHighScores[i];
+       list.appendChild(eachNewHighScore);
+    }
+
+}
 
 
 
-
-// function loadQuiz () {
-//     quizDiv.style.display = "block";
-//     deselectAnswers()
-
-// var currentQuizQuestion = quizQuestions[questionNumber]
-
-// //stick the text from variablesabove into the textbox div
-//     questions.innerText = currentQuizQuestion.question
-//     a_text.innerText = currentQuizQuestion.a 
-//     b_text.innerText = currentQuizQuestion.b 
-//     c_text.innerText = currentQuizQuestion.c 
-//     d_text.innerText = currentQuizQuestion.d 
-// }
-// //deselects the answersbefore next question "arrow function"
-// function deselectAnswers() {
-//     answers.forEach(answerEl => answerEl.checked = false)
-// }
-
-
-
-
-
-
-
-
-// loadQuiz()
-
-
-
-
-
-//foreach loop
-// function getSelected() {
-//     var answer
-//     answers.forEach(answerEl => {
-//         if(answerEl.checked) {
-//             answer = answerEl.id
-//         }
-//     })
-
-//     return answer
-// }
-
-
-// function saveScore() {
-//     var sScore = confirm("Save score?");
-//     if (sScore) {
-//         var savePrompt = prompt("Enter initials:");
-
-//     }
-// }
 
 function gameOver() {
-   
-    quiz.innerHTML = `<h2>You got ${score} /${quizQuestions.length} correct!</h2>`
-    submitbutton.addEventListener("click", saveScore);
+    submitbutton.style.display = "none";
+    quiz.innerHTML = `<h2>You got ${score} /${quizQuestions.length} correct!</h2>`;
+    console.log(score);
+    savebtn.addEventListener("click", saveScore);
         }
-   
-        
-    
 
 
-// submitbutton.addEventListener('click', () => {
-//     const answer = getSelected()
-//     if (answer) {
-//         if (answer === quizQuestions[questionNumber].correct) {
-//             score++
-//         }
-//         questionNumber++
-
-//         if (questionNumber < quizQuestions.length) {
-//             loadQuiz() 
-//         } else {
-//              gameOver()
-            
-            
-//         }
-        
-//         }
-        
-//     }
-    
-// )
 
 
+//event listeners
+savebtn.addEventListener("click", saveScore);
+showScoresBtn.addEventListener("click", addScore);

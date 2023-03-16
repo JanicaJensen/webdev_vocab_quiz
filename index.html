@@ -10,17 +10,21 @@
 </head>
 <body>
     <!--<h1>Project Starter</h1>-->
-    <div id="timerDisplay"><p>timer</p></div>
+   
     
     <main>
 
-        <div class="startQuiz">
-            <h1>Javascript Coding Quiz</h1>
-        <p>You WILL be timed, and penalized by losing time for wrong answers.</p> 
+        <div class="startQuiz" id="startQuiz">
+            <h1 id="startQuiz">Javascript Coding Quiz</h1>
+        <p id="startQuiz">You WILL be timed, and penalized by losing time for wrong answers.</p> 
        </div>
     
             <div class="quiz-container" id="quiz">
+                
     <div class="quiz-header">
+        <div id="timerDisplay" class=""timerDisplay">
+            <p id="timerDisplay">timer</p>
+        </div>
     <h2 id="question">Question text</h2>
     <ul>
         <li>
@@ -49,14 +53,21 @@
 </div>
 <button id="submit">Submit</button>
 
-<div class="scoreForm">
+<div class="scoreForm" id="scoreForm">
     <p>Save your score.</p>
-    <p>Initials:</p>
+    <p><label for="initials">Initials: </label> <input type="text" name="initials" id="initials"></p>
+    <!-- <input type="hidden" name="score" value="${score}"> -->
+    <p><label for="scoreNum">Score: </label>
+    <input type="number" disabled readonly id="scoreNum" name="scoreNum" value="${score}">
+  <input type="submit" value="Save" id="savebtn"> 
+  <button id="showScoresBtn">Show scores</button>
 </div>
 
-<div class="scoreList">
+<div class="scoreList" id="highScoreDiv">
     <h2>HIGH SCORES</h2>
-<ol id=”highScores”></ol>
+<ol id=”list”>
+    
+</ol> 
 </div>
 </main>
 

@@ -19,6 +19,10 @@
     margin: 0;
   }
 
+   .timerDisplay {
+    
+  } 
+
   .quiz-container {
     background-color: #fff;
     border-radius: 10px;
@@ -26,7 +30,7 @@
     width: 600px;
     overflow: hidden;
     column-gap: 10px;
-    display: none;
+    /* display: none; */
   }
 
   
@@ -44,6 +48,12 @@
     width: 600px;
     overflow: hidden;
     column-gap: 10px;
+  }
+
+  .startQuiz p {
+    padding: 1rem;
+    text-align: center;
+    margin:0;
   }
 
   .startQuiz h1 {
@@ -69,6 +79,9 @@
     margin:1rem 0;
   }
 
+  .highScoreDiv div {
+    display: block;
+  }
 
   button {
     background-color: tomato;
