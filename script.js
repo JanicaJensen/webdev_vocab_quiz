@@ -219,7 +219,10 @@ function gameOver() {
         }
 
 
-
+const clearBtn = document.querySelector("#clearBtn");
+clearBtn.addEventListener("click", () => {
+    localStorage.clear();
+});
 
 //event listeners
 savebtn.addEventListener("click", saveScore);
