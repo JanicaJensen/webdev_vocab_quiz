@@ -199,11 +199,11 @@ function addScore() {
         return;
     }
     console.log(savedScores);
-    var storedHighScores = JSON.parse(savedScores);
-    for (; i < storedHighScores.length; i++) {
-        var eachNewHighScore = document.createElement("li");
-        eachNewHighScore.innerHTML = storedHighScores[i];
-       list.appendChild(eachNewHighScore);
+    var storedScores = JSON.parse(savedScores);
+    for (; i < storedScores.length; i++) {
+        var newScoreList = document.createElement("li");
+        newScoreList.innerHTML = storedScores[i];
+       list.appendChild(newScoreList);
     }
 
 }
