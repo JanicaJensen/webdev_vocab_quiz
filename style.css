@@ -19,9 +19,6 @@
     margin: 0;
   }
 
-   .timerDisplay {
-    
-  } 
 
   .quiz-container {
     background-color: #fff;
@@ -33,12 +30,30 @@
     /* display: none; */
   }
 
+
+
+   .timer {
+  display:flex;
+  column-gap: 10px;
+  background-color: aquamarine;
+  width:26%;
+  padding: 10px;
+  box-shadow: 2px 2px 2px lightgray;
+  border-radius: 10px;
+  } 
+
+.timer .timeSec {
+  /* background-color: darkcyan; */
+}
+  
+
+  
   
 
  
 
   .quiz-header {
-    padding:4rem;
+    padding:1rem;
   }
   
   .startQuiz {

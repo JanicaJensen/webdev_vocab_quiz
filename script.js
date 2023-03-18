@@ -69,7 +69,9 @@ var submitbutton = document.getElementById('submit')
 var list = document.getElementById('list');
 var scoreForm = document.getElementById('scoreForm');
 var startQuizDiv = document.getElementById('startQuiz');
-var timerDisplay = document.getElementById('timerDisplay');
+var timer = document.getElementById('timer');
+var timeText =  document.getElementById('timeText');
+var timeSec = document.getElementById('timeSec');
 var savebtn = document.getElementById('savebtn');
 var scoreForm = document.getElementById('scoreForm');
 var initials = document.getElementById('initials');
@@ -77,6 +79,9 @@ var showScoresBtn = document.getElementById('showScoresBtn');
 var questionNumber = 0
 var score = 0
 var scoreDisplay = (initials.value) ;
+
+
+var interval;
 
 
 
@@ -173,13 +178,15 @@ function deselectAnswers() {
 
     
 function startQuiz() {
+    
     quiz.style.display = "none";
     submitbutton.innerText = "Start Quiz";
     submitbutton.addEventListener('click', () => {
         startQuizDiv.style.display = "none";
         quiz.style.display = "block";
         
-      
+      time = quizQuestions.length * 10;
+      intervalId = setInterval(countdown, 1000);
 
         deselectAnswers()
         submitbutton.innerText = "submit";
@@ -191,11 +198,11 @@ var currentQuizQuestion = quizQuestions[questionNumber]
     b_text.innerText = currentQuizQuestion.b 
     c_text.innerText = currentQuizQuestion.c 
     d_text.innerText = currentQuizQuestion.d 
-    timerDisplay.innerText = "check startquiz function insert time here";
     
     getSelected()
     
 }
+
 
     )}
 
@@ -203,7 +210,7 @@ var currentQuizQuestion = quizQuestions[questionNumber]
 
 
 
-startQuiz();
+
 
 // timer
 
@@ -237,6 +244,8 @@ startQuiz();
 //timer
 
 
+
+
 var i = 0
 function addScore() {
     var savedScores = localStorage.getItem("high scores");
@@ -254,8 +263,45 @@ function addScore() {
 }
 
 
+var intervalID;
+var time;
+
+function countdown() {
+    time--;
+    displayTime();
+    if (time < 1) {
+        gameOver();
+    }
+}
+ 
+function displayTime() {
+    timeSec.innerText = time;
+}
 
 
+
+startQuiz();
+
+// function countdown() {
+//     clearInterval(interval);
+//     interval = setInterval( function() {
+//         var timer = timeSec.innerHTML; 
+//         timer = timer.split(':');
+//         var minutes = timer[0];
+//         var seconds = timer[1];
+//         seconds -= 1;
+//         if (minutes < 0) return;
+//         else if (seconds < 0 && minutes != 0) {
+//             minutes -= 1;
+//             seconds = 59;
+//         }
+//         else if (seconds < 10 && length.seconds != 2) seconds = '0' + seconds;
+  
+//         timeSec.innerHTML= minutes + ":" + seconds;
+  
+//         if (minutes == 0 && seconds == 0) clearInterval(interval);
+//     }, 1000);
+//   }
 
 
 
