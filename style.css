@@ -79,11 +79,49 @@
     margin:1rem 0;
   }
 
-  .highScoreDiv div {
-    display: block;
+.scoreForm  {
+  background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(100,100,100,0.1);
+    width: 600px;
+    overflow: hidden;
+    column-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items:center;
+    padding-bottom: 1rem;
+    padding-top: 0;
+    display: none;
+}
+.scoreform p {
+  padding-top: 
+}
+  .savebtn input {
+    width: 50px;
   }
 
-  button {
+.smallButtonsDiv {
+  text-align: center;
+}
+
+  .smallBtn  {
+    background-color: tomato;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    display:inline;
+    width: 150px;
+    height:40px;
+   text-align: center;
+   margin: 10px;
+  }
+  /* .refresh  {
+   display:none; 
+  } */
+
+  .answerBtn  {
     background-color: tomato;
     border: none;
     border-radius:10px;
@@ -96,6 +134,17 @@
     padding: 1.3rem;
   }
 
+  .highScoreDiv {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(100,100,100,0.1);
+    width: 600px;
+    overflow: hidden;
+    column-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    display: none;
+  }
   
   button:hover {
     background-color: springgreen;

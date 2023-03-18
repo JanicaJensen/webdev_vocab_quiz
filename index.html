@@ -51,23 +51,34 @@
 
 
 </div>
-<button id="submit">Submit</button>
+<button id="submit" class = "answerBtn">Submit</button>
 
 <div class="scoreForm" id="scoreForm">
+    <p id="announceScore"></p>
     <p>Save your score.</p>
-    <p><label for="initials">Initials: </label> <input type="text" name="initials" id="initials"></p>
+    <p><label for="initials">Initials: </label> <input type="text" name="initials" id="initials">
+        <input type="submit" value="Save" id="savebtn" class="smallbtn"> </p>
     
-  <input type="submit" value="Save" id="savebtn"> 
-  <button id="showScoresBtn">Show scores</button>
+  <button id="refreshBtn" class="smallBtn" value="Reload Page" onClick="window.location.reload(true)">Play again</button> 
+<button id="showScoresBtn" class="smallBtn">Show scores</button>
 </div>
 
-<div class="scoreList" id="highScoreDiv">
+<div class="highScoreDiv" id="highScoreDiv">
     <h2>HIGH SCORES</h2>
-<ol id="list"></ol>
-<button id="clearBtn">clear high scores</button>
- 
+
+<div class="smallButtonsDiv">
+    <button id="showScoresBtn" class="smallBtn">Show scores</button>
+    <button id="clearBtn" class="smallBtn">clear high scores</button>
+    <button id="refreshBtn" class="smallBtn" value="Reload Page" onClick="window.location.reload(true)">Play again</button>
+    <ol id="list"></ol>
 </div>
+
+ 
+
 </main>
+
+
+
 
     <script src="script.js"></script>
 </body>

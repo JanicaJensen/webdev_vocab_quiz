@@ -96,6 +96,7 @@ function getSelected() {
 
 function saveScore(event) {
     event.preventDefault();
+    highScoreDiv.style.display = "block";
     if (initials.value === "") {
         alert("Please enter your initials!");
         return;
@@ -215,15 +216,39 @@ function gameOver() {
     submitbutton.style.display = "none";
     quiz.innerHTML = `<h2>You got ${score} /${quizQuestions.length} correct!</h2>`;
     console.log(score);
+    scoreForm.style.display = "block";
     savebtn.addEventListener("click", saveScore);
+    
         }
 
 
+ 
+
 const clearBtn = document.querySelector("#clearBtn");
+
+
+
 clearBtn.addEventListener("click", () => {
     localStorage.clear();
-});
+    list.style.display = "none";
+     disappearbtns();
+    })
 
+    function disappearbtns( ){
+        showScoresBtn.style.display = "none";
+        clearBtn.style.display = "none";
+        refreshBtn.style.display = "block";
+        };
+function reload() {
+    window.location.reload;
+};
 //event listeners
 savebtn.addEventListener("click", saveScore);
 showScoresBtn.addEventListener("click", addScore);
+
+
+refreshBtn.addEventListener("click", event => {
+    document.getElementById("reload").onclick = function() {
+        location.reload(true);
+    }
+});
