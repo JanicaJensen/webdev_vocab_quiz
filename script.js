@@ -80,6 +80,8 @@ var scoreDisplay = (initials.value) ;
 
 
 
+
+
 function getSelected() {
     var answer
     answers.forEach(answerEl => {
@@ -90,6 +92,11 @@ function getSelected() {
 
     return answer
 }
+
+
+
+
+
 
 
 
@@ -123,6 +130,8 @@ function saveScore(event) {
 
        
 
+        
+
  
 
 
@@ -144,9 +153,9 @@ submitbutton.addEventListener('click', () => {
         
         }
         
-    }
-    
-)
+    })
+
+
 
 
 
@@ -161,13 +170,17 @@ function deselectAnswers() {
 
 
     
+
+    
 function startQuiz() {
     quiz.style.display = "none";
     submitbutton.innerText = "Start Quiz";
     submitbutton.addEventListener('click', () => {
         startQuizDiv.style.display = "none";
         quiz.style.display = "block";
-       
+        
+      
+
         deselectAnswers()
         submitbutton.innerText = "submit";
 
@@ -178,7 +191,8 @@ var currentQuizQuestion = quizQuestions[questionNumber]
     b_text.innerText = currentQuizQuestion.b 
     c_text.innerText = currentQuizQuestion.c 
     d_text.innerText = currentQuizQuestion.d 
-
+    timerDisplay.innerText = "check startquiz function insert time here";
+    
     getSelected()
     
 }
@@ -187,10 +201,40 @@ var currentQuizQuestion = quizQuestions[questionNumber]
 
 
 
+
+
 startQuiz();
 
+// timer
 
-    
+// const timerDisplay = 
+// function displayTime() {
+//   timeDisplay.textContent = time;
+// }
+
+// time = quizQuestions.length * 10;
+//     intervalID = setInterval(countdown, 1000);
+
+// function countdown() {
+//     time--;
+//     displayTime();
+//     if(time < 1) {
+//         gameOver();
+//     }
+// }
+
+// } else { 
+//     setTimeout;
+//     if (time >= 10) {
+//         time = time -10;
+//         timerDisplay();
+//     } else {
+//         time = 0;
+//         timerDisplay();
+//         gameOver();
+
+
+//timer
 
 
 var i = 0
@@ -212,6 +256,9 @@ function addScore() {
 
 
 
+
+
+
 function gameOver() {
     submitbutton.style.display = "none";
     quiz.innerHTML = `<h2>You got ${score} /${quizQuestions.length} correct!</h2>`;
@@ -224,7 +271,16 @@ function gameOver() {
 
  
 
+
+
+
+
 const clearBtn = document.querySelector("#clearBtn");
+
+
+
+
+
 
 
 
@@ -234,17 +290,33 @@ clearBtn.addEventListener("click", () => {
      disappearbtns();
     })
 
+
+
+
+
     function disappearbtns( ){
         showScoresBtn.style.display = "none";
         clearBtn.style.display = "none";
         refreshBtn.style.display = "block";
         };
+
+
+
+
+
 function reload() {
     window.location.reload;
 };
+
+
+
+
 //event listeners
 savebtn.addEventListener("click", saveScore);
 showScoresBtn.addEventListener("click", addScore);
+
+
+
 
 
 refreshBtn.addEventListener("click", event => {
