@@ -1,5 +1,5 @@
 /*This was more convoluted on my web dev portfolio but I learned a better way to do it */
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
 
 * {
     box-sizing: border-box;
@@ -19,59 +19,17 @@
     margin: 0;
   }
 
-
-  .quiz-container {
+  .card {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px 2px rgba(100,100,100,0.1);
     width: 600px;
-    overflow: hidden;
+    /* overflow: hidden; */
     column-gap: 10px;
     /* display: none; */
   }
 
-
-
-   .timer {
-  display:flex;
-  column-gap: 10px;
-  background-color: aquamarine;
-  width:26%;
-  padding: 10px;
-  box-shadow: 2px 2px 2px lightgray;
-  border-radius: 10px;
-  } 
-
-.timer .timeSec {
-  /* background-color: darkcyan; */
-}
-  
-
-  
-  
-
- 
-
-  .quiz-header {
-    padding:1rem;
-  }
-  
-  .startQuiz {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 2px rgba(100,100,100,0.1);
-    width: 600px;
-    overflow: hidden;
-    column-gap: 10px;
-  }
-
-  .startQuiz p {
-    padding: 1rem;
-    text-align: center;
-    margin:0;
-  }
-
-  .startQuiz h1 {
+  .card h1 {
     padding: 1rem;
     text-align: center;
     margin:0;
@@ -82,6 +40,41 @@
     text-align: center;
     margin:0;
   }
+
+  .card p {
+    padding: 1rem;
+    text-align: center;
+    margin:0;
+  }
+  
+  .bigBtn {
+    background-color: tomato;
+      border: none;
+      border-radius:10px;
+      color: white;
+      display: block;
+      width: 600px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-family: inherit;
+      padding: 1.3rem;
+  }
+
+  .timer {
+    display:flex;
+    column-gap: 10px;
+    background-color: aquamarine;
+    width:26%;
+    padding: 10px;
+    box-shadow: 2px 2px 2px lightgray;
+    border-radius: 10px;
+    margin: 1rem;
+
+    } 
+
+   .hidden {
+    display: none;
+   }
 
 
   ul {
@@ -94,33 +87,6 @@
     margin:1rem 0;
   }
 
-.scoreForm  {
-  background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 2px rgba(100,100,100,0.1);
-    width: 600px;
-    overflow: hidden;
-    column-gap: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    align-items:center;
-    padding-bottom: 1rem;
-    padding-top: 0;
-    display: none;
-}
-.scoreform p {
-  padding-top: 
-}
-  .savebtn input {
-    width: 50px;
-  }
-
-.smallButtonsDiv {
-  text-align: center;
-}
-
   .smallBtn  {
     background-color: tomato;
     border: none;
@@ -131,22 +97,6 @@
     height:40px;
    text-align: center;
    margin: 10px;
-  }
-  /* .refresh  {
-   display:none; 
-  } */
-
-  .answerBtn  {
-    background-color: tomato;
-    border: none;
-    border-radius:10px;
-    color: white;
-    display: block;
-    width: 600px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-family: inherit;
-    padding: 1.3rem;
   }
 
   .highScoreDiv {

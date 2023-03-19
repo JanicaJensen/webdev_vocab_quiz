@@ -8,28 +8,25 @@
     <link rel="stylesheet" href="style.css">
     <title>Javascript Quiz</title>
 </head>
-<body>
-    <!--<h1>Project Starter</h1>-->
-   
-    
-    <main>
+<!--startCard stats here-->
+<div class="card" id="startCard">
 
-        <div class="startQuiz" id="startQuiz">
-            <h1 id="startQuiz">Javascript Coding Quiz</h1>
-        <p id="startQuiz">You WILL be timed, and penalized by losing time for wrong answers.</p> 
-       </div>
-    
-            <div class="quiz-container" id="quiz">
-                
-    <div class="quiz-header">
-        <div class="timer">
-            <div class="timeText" id="timeText"> Time Left:</div>
-            <div class="timeSec" id="timeSec"></div>
-            
-        </div>
+    <h1>JavaScript Quiz</h1>
+    <p>You will be penalized for wrong answers.</p>
+    <button class="bigBtn" id="startBtn">Start Quiz</button>
+
+</div>
+<!--Game card DIV starts here-->
+
+<div class="card hidden" id="gameCard">
+
+    <div class="timer">
+        <div class="timeTextBox" id="timeText"> Time Left:</div>
+        <div class="secondsBox" id="seconds"></div>
     </div>
 
     <h2 id="question">Question text</h2>
+
     <ul>
         <li>
             <input type="radio" name="answer" id="a" class="answer">
@@ -51,22 +48,29 @@
             <label for="d" id="d_text">Question</label>
         </li>
     </ul>
+
+    <button id="answerBtn" class = "bigBtn">Submit</button>
+
 </div>
+        
+    
+
+    
+   
+   
 
 
-</div>
-<button id="submit" class = "answerBtn">Submit</button>
 
-<div class="scoreForm" id="scoreForm">
+<!--End Card starts here-->
+
+<div class="card hidden" id="endCard">
+
     <p id="announceScore"></p>
     <p>Save your score.</p>
     <p><label for="initials">Initials: </label> <input type="text" name="initials" id="initials">
-        <input type="submit" value="Save" id="savebtn" class="smallbtn"> </p>
-    
+        <input type="submit" value="Save" id="saveBtn" class="smallbtn"> </p>
   <button id="refreshBtn" class="smallBtn" value="Reload Page" onClick="window.location.reload(true)">Play again</button> 
 <!-- <button id="showScoresBtn" class="smallBtn">Show scores</button> -->
-</div>
-
 <div class="highScoreDiv" id="highScoreDiv">
     <h2>HIGH SCORES</h2>
 
@@ -74,15 +78,11 @@
     <button id="showScoresBtn" class="smallBtn">Show scores</button>
     <button id="clearBtn" class="smallBtn">clear high scores</button>
     <button id="refreshBtn" class="smallBtn" value="Reload Page" onClick="window.location.reload(true)">Play again</button>
+</div>
     <ol id="list"></ol>
 </div>
 
- 
-
-</main>
-
-
-
+</div>
 
     <script src="script.js"></script>
 </body>

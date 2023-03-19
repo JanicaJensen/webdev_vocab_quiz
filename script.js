@@ -1,4 +1,3 @@
-//objects
 
 
 const quizQuestions = [
@@ -54,55 +53,55 @@ const quizQuestions = [
 ];
 
 
+//Variables that need to be global
+ 
+//buttons 
+var startBtn = document.getElementById('startBtn');
+var answerBtn = document.getElementById('answerBtn');
+var showScoresBtn = document.getElementById('showScoresBtn');
+var clearBtn = document.getElementById('clearBtn');
+var refreshBtn = document.getElementById('refreshBtn')
+var saveBtn = document.getElementById('saveBtn');
+var showScoresBtn = document.getElementById('showScoresBtn');
+var refreshBtn = document.getElementById('refreshBtn');
 
-
-
-const quiz = document.getElementById('quiz')
-const answers = document.querySelectorAll('.answer')
-const questions = document.getElementById('question')
+//question text content
+const answerEl = document.querySelectorAll('.answer')
+const questionEls = document.getElementById('question')
 const a_text = document.getElementById('a_text')
 const b_text = document.getElementById('b_text')
 const c_text = document.getElementById('c_text')
 const d_text = document.getElementById('d_text')
-var submitbutton = document.getElementById('submit')
-
-var list = document.getElementById('list');
-var scoreForm = document.getElementById('scoreForm');
-var startQuizDiv = document.getElementById('startQuiz');
-var timer = document.getElementById('timer');
-var timeText =  document.getElementById('timeText');
-var timeSec = document.getElementById('timeSec');
-var savebtn = document.getElementById('savebtn');
-var scoreForm = document.getElementById('scoreForm');
-var initials = document.getElementById('initials');
-var showScoresBtn = document.getElementById('showScoresBtn');
-var questionNumber = 0
-var score = 0
-var scoreDisplay = (initials.value) ;
-
-
-var interval;
 
 
 
+//divs and sections
+var startCard = document.getElementById('startCard');
+var gameCard = document. getElementById('gameCard');
+var endCard = document.getElementById('endCard');
+var announceScore = document.getElementById('announceScore');
+var seconds = document.getElementById('seconds');
 
+//other
+var questionNumber = 0;
+let score = 0;
+let currentQuestion = 0;
+var intervalID;
+var time = 60;
 
-function getSelected() {
-    var answer
-    answers.forEach(answerEl => {
-        if(answerEl.checked) {
-            answer = answerEl.id
-        }
-    })
-
-    return answer
+function countdown() {
+    time--;
+    displayTime();
+    if (time < 1) {
+        gameOver();
+    }
 }
+ 
 
 
-
-
-
-
+function displayTime() {
+    seconds.innerText = time;
+}
 
 
 
@@ -133,14 +132,48 @@ function saveScore(event) {
 
         }
 
-       
-
+//checks the answer with the id 
+function getSelected() {
+    var answer
+        answerEl.forEach(answerEl => {
+            if(answerEl.checked) {
+                answer = answerEl.id
+            }})
+            return answer
+        }
         
+// save score to local 
+function saveScore(event) {
+    event.preventDefault();
+    highScoreDiv.style.display = "block";
+    if (initials.value === "") {
+        alert("Please enter your initials!");
+        return;
+    } 
+    
+    var userScore = (`${initials.value}, ${score} `);
+    localStorage.setItem('savedScores', userScore);
+    
+    var savedScores = localStorage.getItem("high scores");
+    var scoresArray;
 
- 
+    if (savedScores === null) {
+        scoresArray = [];
+    } else {
+        scoresArray = JSON.parse(savedScores)
+    }
+    console.log(userScore);
+    scoresArray.push(userScore);
+    var scoresArrayString = JSON.stringify(scoresArray);
+    window.localStorage.setItem("high scores", scoresArrayString);
+    showScoresBtn.addEventListener('click', addScore);
+
+        }
 
 
-submitbutton.addEventListener('click', () => {
+
+//answer button event listener
+answerBtn.addEventListener('click', () => {
     const answer = getSelected()
     if (answer) {
         if (answer === quizQuestions[questionNumber].correct) {
@@ -149,10 +182,9 @@ submitbutton.addEventListener('click', () => {
         questionNumber++
 
         if (questionNumber < quizQuestions.length) {
-            loadQuiz() 
+            startGame() 
         } else {
              gameOver()
-            
             
         }
         
@@ -161,91 +193,45 @@ submitbutton.addEventListener('click', () => {
     })
 
 
+    
+    
 
 
 
 
-
+function startGame() {
+   
+    gameCard.classList.remove("hidden");
+    time = quizQuestions.length * 10;
+    intervalID = setInterval(countdown, 1000);
+    deselectAnswers();
+    var currentQuizQuestion = quizQuestions[questionNumber];
+       
+        question.innerText = currentQuizQuestion.question
+        a_text.innerText = currentQuizQuestion.a 
+        b_text.innerText = currentQuizQuestion.b 
+        c_text.innerText = currentQuizQuestion.c 
+        d_text.innerText = currentQuizQuestion.d 
+        deselectAnswers()
+        getSelected()
+       
+        
+}
 
 function deselectAnswers() {
-    answers.forEach(answerEl => answerEl.checked = false)
+    answerEl.forEach(answerEl => answerEl.checked = false)
     }
 
 
 
 
-    
-
-    
-function startQuiz() {
-    
-    quiz.style.display = "none";
-    submitbutton.innerText = "Start Quiz";
-    submitbutton.addEventListener('click', () => {
-        startQuizDiv.style.display = "none";
-        quiz.style.display = "block";
-        
-      time = quizQuestions.length * 10;
-      intervalId = setInterval(countdown, 1000);
-
-        deselectAnswers()
-        submitbutton.innerText = "submit";
-
-var currentQuizQuestion = quizQuestions[questionNumber]
-
-    questions.innerText = currentQuizQuestion.question
-    a_text.innerText = currentQuizQuestion.a 
-    b_text.innerText = currentQuizQuestion.b 
-    c_text.innerText = currentQuizQuestion.c 
-    d_text.innerText = currentQuizQuestion.d 
-    
-    getSelected()
-    
-}
-
-
-    )}
-
-
-
-
-
-
-
-// timer
-
-// const timerDisplay = 
-// function displayTime() {
-//   timeDisplay.textContent = time;
-// }
-
-// time = quizQuestions.length * 10;
-//     intervalID = setInterval(countdown, 1000);
-
-// function countdown() {
-//     time--;
-//     displayTime();
-//     if(time < 1) {
-//         gameOver();
-//     }
-// }
-
-// } else { 
-//     setTimeout;
-//     if (time >= 10) {
-//         time = time -10;
-//         timerDisplay();
-//     } else {
-//         time = 0;
-//         timerDisplay();
-//         gameOver();
-
-
-//timer
-
-
-
-
+//event listener for start quiz game
+startBtn.addEventListener("click", () =>{
+    startCard.classList.add('hidden');
+    startGame();
+})
+ 
+//adds score to the local storage
 var i = 0
 function addScore() {
     var savedScores = localStorage.getItem("high scores");
@@ -263,73 +249,19 @@ function addScore() {
 }
 
 
-var intervalID;
-var time;
-
-function countdown() {
-    time--;
-    displayTime();
-    if (time < 1) {
-        gameOver();
-    }
-}
- 
-function displayTime() {
-    timeSec.innerText = time;
-}
-
-
-
-startQuiz();
-
-// function countdown() {
-//     clearInterval(interval);
-//     interval = setInterval( function() {
-//         var timer = timeSec.innerHTML; 
-//         timer = timer.split(':');
-//         var minutes = timer[0];
-//         var seconds = timer[1];
-//         seconds -= 1;
-//         if (minutes < 0) return;
-//         else if (seconds < 0 && minutes != 0) {
-//             minutes -= 1;
-//             seconds = 59;
-//         }
-//         else if (seconds < 10 && length.seconds != 2) seconds = '0' + seconds;
-  
-//         timeSec.innerHTML= minutes + ":" + seconds;
-  
-//         if (minutes == 0 && seconds == 0) clearInterval(interval);
-//     }, 1000);
-//   }
-
-
-
+// gameover function
 function gameOver() {
-    submitbutton.style.display = "none";
-    quiz.innerHTML = `<h2>You got ${score} /${quizQuestions.length} correct!</h2>`;
+    gameCard.classList.add('hidden');
+   endCard.classList.remove('hidden');
+    announceScore.innerHTML = `<h2>You got ${score} /${quizQuestions.length} correct!</h2>`;
     console.log(score);
     scoreForm.style.display = "block";
-    savebtn.addEventListener("click", saveScore);
+    saveBtn.addEventListener("click", saveScore);
     
         }
 
 
- 
-
-
-
-
-
-const clearBtn = document.querySelector("#clearBtn");
-
-
-
-
-
-
-
-
+//buttons clear the local memory and disappear some buttons
 clearBtn.addEventListener("click", () => {
     localStorage.clear();
     list.style.display = "none";
@@ -338,14 +270,11 @@ clearBtn.addEventListener("click", () => {
 
 
 
-
-
-    function disappearbtns( ){
+function disappearbtns( ){
         showScoresBtn.style.display = "none";
         clearBtn.style.display = "none";
         refreshBtn.style.display = "block";
         };
-
 
 
 
@@ -358,15 +287,5 @@ function reload() {
 
 
 //event listeners
-savebtn.addEventListener("click", saveScore);
+saveBtn.addEventListener("click", saveScore);
 showScoresBtn.addEventListener("click", addScore);
-
-
-
-
-
-refreshBtn.addEventListener("click", event => {
-    document.getElementById("reload").onclick = function() {
-        location.reload(true);
-    }
-});
